@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>search</title>
+        <style>
+            .articles{
+                font-size: x-large;
+                font-family: sans-serif;
+                padding: 60px;
+            }
+            .articles a{
+                font-weight: 1000;
+            }
+            a{
+                color: hotpink;
+                text-decoration: none;
+                font-size: x-large;
+            }
+            a:hover{
+                color: green;
+            }
+            h1{
+                font-size: x-large;
+                font-family: sans-serif;
+                padding: 60px;
+            }
+            .head {
+                padding: 60px;
+                text-align: center;
+                background-image:url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fstartswithabang%2Ffiles%2F2017%2F10%2FTiny_bit_of_U.jpg");
+                color: rgb(255, 255, 255);
+                font-size: 20px;
+                font-family: sans-serif;
+            }
+
+            
+        </style>
+    </head>
+    <body>
+        <div class ="head">
+            <h1>Search Results</h1>  
+        </div>
+        <div class = articles>
+            {% if filtered %}
+                    {% for post in filtered %}
+                    <a href="{% url 'home:content' post.id %}">{{post.title}}</a>
+                    <p>{{post.description}}</p>
+                    {% endfor %}
+                
+              
+            {% else %}
+                <p>No posts found</p>
+            {% endif %}
+        </div>
+    </body>
+</html>

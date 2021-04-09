@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PAGE CONTENT</title>
+        <style>
+            .title{
+                padding: 60px;
+                text-align: center;
+                background: rgb(255,150,150);
+                color: rgb(255, 255, 255);
+                font-size: 20px;
+                font-family: sans-serif;
+
+            }
+            .post{
+                text-align: left;
+                font-size: larger;
+                font-family: sans-serif;
+            }
+            .navbar ul{
+                list-style-type: none;
+                margin: 0px;
+                padding: 10px;
+                font-family:sans-serif;
+                background: hotpink;
+            }
+            .navbar a{
+                color: white;
+                text-decoration: none;
+            }
+            .navbar a:hover{
+                color: black;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <div class="title">
+            <h1>{{post.title}}</h1>
+        </div>
+        
+        <div class="navbar">
+            <ul>
+                <li><a href="https://www.google.com">about</a></li>
+            </ul>         
+        </div>
+        </div>
+        <div class="post">
+            <p>
+                {{post.content}}
+            </p>
+        </div>
+    </body>
+</html>
