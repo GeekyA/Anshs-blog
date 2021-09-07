@@ -2,54 +2,34 @@
 <html>
     <head>
         <title>search</title>
-        <style>
-            .articles{
-                font-size: x-large;
-                font-family: sans-serif;
-                padding: 60px;
-            }
-            .articles a{
-                font-weight: 1000;
-            }
-            a{
-                color: hotpink;
-                text-decoration: none;
-                font-size: x-large;
-            }
-            a:hover{
-                color: green;
-            }
-            h1{
-                font-size: x-large;
-                font-family: sans-serif;
-                padding: 60px;
-            }
-            .head {
-                padding: 60px;
-                text-align: center;
-                background-image:url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fstartswithabang%2Ffiles%2F2017%2F10%2FTiny_bit_of_U.jpg");
-                color: rgb(255, 255, 255);
-                font-size: 20px;
-                font-family: sans-serif;
-            }
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-            
-        </style>
     </head>
     <body>
-        <div class ="head">
+        <div class ="jumbotron" style="margin-bottom:0">
             <h1>Search Results</h1>  
         </div>
-        <div class = articles>
+         <nav class="navbar navbar-inverse navbar-fixed">
+            <div class="container-fluid">
+             <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="/">home</a></li>
+                <li class="nav-item"><a href="/">about</a></li>
+            </ul>
+            </div>
+        </nav>
+        </nav>
             {% if filtered %}
                     {% for post in filtered %}
-                    <a href="{% url 'home:content' post.id %}">{{post.title}}</a>
-                    <p>{{post.description}}</p>
+                        <div class = "card w-75" style="width:400px">
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="{% url 'home:content' post.id %}" class="card-link">{{post.title}}</a></h2>
+                                <p class="card-text ">{{post.description}}</p>
+                            </div>
+                        </div>
+
                     {% endfor %}
-                
-              
             {% else %}
-                <p>No posts found</p>
+                <p style="text-align:center">No posts found</p>
             {% endif %}
         </div>
     </body>

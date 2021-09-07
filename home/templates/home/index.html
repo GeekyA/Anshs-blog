@@ -2,98 +2,41 @@
 <html>
     <head>
         <title>INDEX PAGE</title>
-        <style>
-            .header {
-                padding: 60px;
-                text-align: center;
-                background-image:url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fstartswithabang%2Ffiles%2F2017%2F10%2FTiny_bit_of_U.jpg");
-                color: rgb(255, 255, 255);
-                font-size: 20px;
-                font-family: sans-serif;
-            }
-
-            .articles{
-                font-size: x-large;
-                font-family: sans-serif;
-                padding: 60px;
-            }
-            .articles a{
-                font-weight: 1000;
-            }
-            a{
-                color: hotpink;
-                text-decoration: none;
-                font-size: x-large;
-            }
-            a:hover{
-                color: green;
-            }
-            .navbar ul{
-                list-style-type:none;
-                padding: 10px;
-                margin: 0;
-                font-family:sans-serif;
-                background: hotpink;
-            }
-            .navbar a{
-                color: white;
-            }
-            .navbar input[type=text]{
-                float:right;
-                padding: 6px;
-                margin-top: -30px;
-                margin-right: 50px;
-               
-                
-                
-     
-            }
-            .navbar button{
-                float:right;
-                margin-right: -201px;
-                margin-top: -30px;
-                padding: 14px;
-                cursor: pointer;
-                font-size: 10px;
-                background: hotpink;
-               
-                
-            }
-            .navbar footer{
-                bottom: 0;
-                left: 0;
-                position: fixed;
-            }
-        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body>
-        <div class="header">
-            <h1>ANSH KA BLOG</h1>
+        <div class="jumbotron" style="margin-bottom:0">
+            <h1 style="padding:10px">Ansh's blog</h1>
             
         </div>
-        <div class="navbar">
-            <ul>
-                <li><a href="https://www.instagram.com/ansh_chadha_163/">about</a></li>
-                <form action="{%url 'home:search_results'%}" method="GET" value="{{request.GET.tag}}">
-                    {% csrf_token %}
-                    <input type="text" name="tag" value={{request.GET.tag}}>
-                    <button type="submit" value="Search">
-                </form>
-                
-            </ul>         
-        </div>
-        <div class = articles>
+        <nav class="navbar navbar-inverse navbar-fixed h-90">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li>
+                    <form action="{%url 'home:search_results'%}" method="GET" value="{{request.GET.tag}}" class="form-inline" style="padding:7px">
+                        {% csrf_token %}
+                        <input class="form-control mr-sm-2" type="text" name="tag" value={{request.GET.tag}}>
+                        <button class = "btn btn-primary" type="submit" value="Search">Search</button>
+                    </form>
+                    </li>
+                    <li class="nav-item"><a href="https://www.instagram.com/ansh_chadha_163/">About</a></li>
+                </ul>
+            </div>
+        </nav>
             {% if all_posts %}
                     {% for post in all_posts %}
-                    <a href="{% url 'home:content' post.id %}">{{post.title}}</a>
-                    <p>{{post.description}}</p>
+                        <div class = "card w-75" style="padding:18px">
+                            <div class="card-body">
+                                <h1 class="card-title"><a href="{% url 'home:content' post.id %}" class="card-link">{{post.title}}</a></h1>
+                                <p class="card-text" style="font-size:20px">{{post.description}}</p>
+                            </div>
+                        </div>
+
                     {% endfor %}
-                
-              
             {% else %}
-                <p>No posts found</p>
+                <p style = "text-align:center">No posts found</p>
             {% endif %}
-        </div>
+
 
     </body>
 </html>
